@@ -7,7 +7,11 @@ In this paper, we present a model for Web preemption and SaGe, a SPARQL query se
 
 ## Online demo
 
-AN online demonstration is available at []()
+An online demonstration is available at [http://sage.univ-nantes.fr/](http://sage.univ-nantes.fr/).
+
+## Experiments scripts
+
+All scripts used during experiments are available in the [scripts](https://github.com/sage-org/sage-experiments/tree/master/scripts) directory.
 
 ## Softwares used
 
@@ -20,4 +24,22 @@ AN online demonstration is available at []()
 
 ## Dataset and queries
 
-We used the WatDiv RDF dataset and query workloads from BrTPF exper- iments [14]. The dataset contains 107 triples 11, and the queries used are conjunctive SPARQL queries with STAR, PATH and SNOWFLAKE shapes. These queries vary in complexity, with very high and very low selectivity.
+We used the [Waterloo SPARQL Diversity Tests suite](http://dsg.uwaterloo.ca/watdiv/) (WatDiv) RDF dataset, encoded in [HDT format](http://www.rdfhdt.org/). The dataset contains 10^7 triples, and the queries used are conjunctive SPARQL queries with STAR, PATH and SNOWFLAKE shapes. These queries vary in complexity, with very high and very low selectivity.
+
+## Results
+
+### Average preemption overhead
+
+![Average preemption overhead](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/overhead.png)
+
+### Average workload completion time
+
+![Average workload completion time](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/total_time.png)
+
+### Average time for first results
+
+![Average time for first results](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/time_first_results.png)
+
+### Average number of HTTP requests
+
+![Average number of HTTP requests](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/http_requests.png)

@@ -6,6 +6,8 @@ target/
 .idea/
 *.iml
 
+.DS_Store
+
 __pycache__
 
 # Gradle
