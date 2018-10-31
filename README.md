@@ -30,16 +30,16 @@ We used the [Waterloo SPARQL Diversity Tests suite](http://dsg.uwaterloo.ca/watd
 
 ### Average preemption overhead
 
-![Average preemption overhead](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/overhead.png)
+![Average preemption overhead](https://raw.githubusercontent.com/sage-org/sage-experiments/master/scripts/plots/overhead.png)
 
-### Average workload completion time
+### Average completion time per client
 
-![Average workload completion time](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/total_time.png)
+![Average workload completion time](https://raw.githubusercontent.com/sage-org/sage-experiments/master/scripts/plots/total_time.png)
 
 ### Average time for first results
 
-![Average time for first results](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/time_first_results.png)
+![Average time for first results](https://raw.githubusercontent.com/sage-org/sage-experiments/master/scripts/plots/time_first_results.png)
 
 ### Average number of HTTP requests
 
-![Average number of HTTP requests](https://github.com/sage-org/sage-experiments/blob/master/scripts/plots/http_requests.png)
+![Average number of HTTP requests](https://raw.githubusercontent.com/sage-org/sage-experiments/master/scripts/plots/http_requests.png)
