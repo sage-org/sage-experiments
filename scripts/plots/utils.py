@@ -38,9 +38,10 @@ class DrawPlot(object):
         self._plt.tight_layout()
         if self._save_png:
             self._plt.savefig('scripts/plots/{}.png'.format(self._name), format='png', dpi=1000)
+            print('generated {} PNG plot at scripts/plots/{}.png'.format(self._name, self._name))
         with PdfPages('scripts/plots/{}.pdf'.format(self._name)) as pdf:
             pdf.savefig(self._figure, bbox_inches='tight')
-            print('generated {} plot at scripts/plots/{}.pdf'.format(self._name, self._name))
+            print('generated {} PDF plot at scripts/plots/{}.pdf'.format(self._name, self._name))
 
         self._plt.clf()
 
