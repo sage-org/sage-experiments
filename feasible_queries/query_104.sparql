@@ -1,0 +1,11 @@
+
+PREFIX  dbprop: <http://dbpedia.org/property/>
+PREFIX  dbpedia: <http://dbpedia.org/ontology/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?compound
+WHERE
+  { ?compound rdf:type dbpedia:ChemicalCompound }
+ORDER BY ?compound
+OFFSET  0
+LIMIT   1000

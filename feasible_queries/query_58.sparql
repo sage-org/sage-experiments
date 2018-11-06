@@ -1,0 +1,19 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbprop: <http://dbpedia.org/property/>
+PREFIX  dbpedia: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT  ?artist ?artistName ?occupation ?occupation2
+WHERE
+  { ?artist <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> dbpedia:Person .
+    ?artist rdfs:label ?artistName
+    OPTIONAL
+      { ?artist dbprop:occupation ?occupation
+        FILTER regex(?occupation, "director", "i")
+      }
+    OPTIONAL
+      { ?artist dbpedia:occupation ?occupation2 }
+    FILTER regex(?artistName, "coen$", "i")
+    FILTER ( lang(?artistName) = "en" )
+  }

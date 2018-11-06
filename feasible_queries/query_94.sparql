@@ -1,0 +1,6 @@
+
+SELECT  ?x ?abstract
+WHERE
+  { ?x <http://dbpedia.org/ontology/abstract> ?abstract
+    FILTER regex(?abstract, "beautiful", "i")
+  }

@@ -1,0 +1,110 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?resource ?uri ?wtitle ?comment ?image
+WHERE
+  { {   { ?resource foaf:page <http://en.wikipedia.org/wiki/Power_tool> . ?resource foaf:page ?uri .
+  ?resource rdfs:label ?wtitle .
+  OPTIONAL
+    { ?resource rdfs:comment ?comment
+      FILTER langMatches(lang(?comment), "en")
+    }
+  OPTIONAL
+    { ?resource foaf:depiction ?image }
+   }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Garden_tool> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Garden> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Drill> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Gardening> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Heating> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Cutting> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Company_(military_unit)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Floor> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Paint_(software)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+    }
+    FILTER langMatches(lang(?wtitle), "en")
+  }

@@ -1,0 +1,48 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbprop: <http://dbpedia.org/property/>
+PREFIX  dbpedia: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT  ?movie ?title ?originalTitle ?nationality ?nationality2 ?releaseDate ?summary ?studioName ?duration ?url ?website ?directorName
+WHERE
+  { ?movie <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> dbpedia:Film .
+    ?movie foaf:name ?title
+    OPTIONAL
+      { ?movie rdfs:label ?originalTitle }
+    OPTIONAL
+      { ?movie dbprop:country ?country .
+        ?country rdfs:label ?nationality
+        FILTER ( lang(?nationality) = "en" )
+      }
+    OPTIONAL
+      { ?movie dbprop:country ?nationality2
+        FILTER ( lang(?nationality2) = "en" )
+      }
+    OPTIONAL
+      { ?movie dbpedia:releaseDate ?releaseDate }
+    OPTIONAL
+      { ?movie dbpedia:abstract ?summary
+        FILTER ( lang(?summary) = "fr" )
+      }
+    OPTIONAL
+      { ?movie dbprop:distributor ?studio .
+        ?studio rdfs:label ?studioName
+        FILTER ( lang(?studioName) = "en" )
+      }
+    OPTIONAL
+      { ?movie <http://dbpedia.org/ontology/Work/runtime> ?duration }
+    OPTIONAL
+      { ?movie foaf:homepage ?url }
+    OPTIONAL
+      { ?movie foaf:page ?website }
+    OPTIONAL
+      { ?movie dbpedia:director ?director }
+    OPTIONAL
+      { ?director rdfs:label ?directorName
+        FILTER ( lang(?directorName) = "en" )
+      }
+    FILTER regex(?title, "I, Robot", "i")
+    FILTER regex(?directorName, "Alex Proyas", "i")
+    FILTER ( lang(?originalTitle) = "en" )
+  }

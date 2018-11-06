@@ -1,0 +1,19 @@
+
+PREFIX  dc:   <http://purl.org/dc/terms/>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  dbpedia-owl: <http://dbpedia.org/ontology/>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbpedia-prop: <http://dbpedia.org/property/>
+PREFIX  purl: <http://purl.org/vocab/aiiso/schema#>
+PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX  dbpedia: <http://dbpedia.org/resource/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  opencyc: <http://sw.opencyc.org/2008/06/10/concept/>
+
+SELECT DISTINCT  ?b
+WHERE
+  { ?b ?b_p ?b_o .
+    ?b rdf:type dbpedia-owl:EducationalInstitution
+  }
+OFFSET  0
+LIMIT   1000

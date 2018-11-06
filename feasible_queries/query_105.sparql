@@ -1,0 +1,21 @@
+
+PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+PREFIX  :     <http://dbpedia.org/resource/>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  dbpedia2: <http://dbpedia.org/property/>
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  dbpedia: <http://dbpedia.org/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT  ?subject ?lat ?long ?abstract
+WHERE
+  { ?subject skos:subject <http://dbpedia.org/resource/Category:Towns_in_West_Yorkshire> .
+    ?subject geo:lat ?lat .
+    ?subject geo:long ?long .
+    ?subject <http://dbpedia.org/ontology/abstract> ?abstract
+  }
+LIMIT   1

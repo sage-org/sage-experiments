@@ -1,0 +1,30 @@
+
+SELECT  ?nx ?n
+WHERE
+  {   {   { ?n <http://www.w3.org/2004/02/skos/core#broader> <http://dbpedia.org/resource/Category:Process> }
+        UNION
+          { <http://dbpedia.org/resource/Process> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+            ?n <http://www.w3.org/2004/02/skos/core#broader> ?sub
+          }
+      }
+    UNION
+      {   { ?nx <http://www.w3.org/2004/02/skos/core#broader> <http://dbpedia.org/resource/Category:Process> .
+            ?n <http://www.w3.org/2004/02/skos/core#broader> ?nx
+          }
+        UNION
+          { <http://dbpedia.org/resource/Process> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+            ?nx <http://www.w3.org/2004/02/skos/core#broader> ?sub .
+            ?n <http://www.w3.org/2004/02/skos/core#broader> ?nx
+          }
+      }
+    UNION
+      {   { ?nx <http://www.w3.org/2004/02/skos/core#broader> <http://dbpedia.org/resource/Category:Process> .
+            ?nx <http://www.w3.org/2004/02/skos/core#broader> ?n
+          }
+        UNION
+          { <http://dbpedia.org/resource/Process> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+            ?nx <http://www.w3.org/2004/02/skos/core#broader> ?sub .
+            ?nx <http://www.w3.org/2004/02/skos/core#broader> ?n
+          }
+      }
+  }

@@ -1,0 +1,15 @@
+
+PREFIX  db:   <http://dbpedia.org/resource/>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  ont:  <http://dbpedia.org/ontology/>
+PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX  prop: <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdfsyntax-ns#>
+
+SELECT  ?name ?network
+WHERE
+  { ?show prop:network ?network
+    FILTER regex(?network, "Showtime")
+    ?show prop:showName ?name
+  }

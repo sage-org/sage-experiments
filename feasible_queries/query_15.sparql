@@ -1,0 +1,104 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?resource ?uri ?wtitle ?comment ?image
+WHERE
+  { {   { ?resource foaf:page <http://en.wikipedia.org/wiki/Sellafield> . ?resource foaf:page ?uri .
+  ?resource rdfs:label ?wtitle . }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/AMEC> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+       }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Construction> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+       }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Page> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+       }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Position_(team_sports)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+       }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Engineering> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+       }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Liquid_(The_Rasmus_song)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+      }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Scouting> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+       }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Hell_of_a_Tester> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+       }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Scout_Leader> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+
+         }
+    }
+    FILTER langMatches(lang(?wtitle), "en")
+  }

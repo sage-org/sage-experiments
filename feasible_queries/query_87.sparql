@@ -1,0 +1,4 @@
+
+SELECT DISTINCT  ?field
+WHERE
+  { ?s <http://dbpedia.org/property/field> ?field }

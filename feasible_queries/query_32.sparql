@@ -1,0 +1,80 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?resource ?uri ?wtitle ?comment ?image
+WHERE
+  { {   { ?resource foaf:page <http://en.wikipedia.org/wiki/Politics> . ?resource foaf:page ?uri .
+  ?resource rdfs:label ?wtitle .
+  OPTIONAL
+    { ?resource rdfs:comment ?comment
+      FILTER langMatches(lang(?comment), "en")
+    }
+  OPTIONAL
+    { ?resource foaf:depiction ?image }
+   }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Politician> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Change> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Login> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Copyright> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Posts> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Numero_sign> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+    }
+    FILTER langMatches(lang(?wtitle), "en")
+  }

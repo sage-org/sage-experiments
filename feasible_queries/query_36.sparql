@@ -1,0 +1,16 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT  ?title ?description ?sameas
+WHERE
+  { <http://dbpedia.org/resource/Hilary_Duff> foaf:name ?title .
+    <http://dbpedia.org/resource/Hilary_Duff> rdfs:comment ?description
+    FILTER ( lang(?description) = "en" )
+    OPTIONAL
+      {   { ?sameas owl:sameAs <http://dbpedia.org/resource/Hilary_Duff> }
+        UNION
+          { <http://dbpedia.org/resource/Hilary_Duff> owl:sameAs ?sameas }
+      }
+  }

@@ -1,0 +1,104 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?resource ?uri ?wtitle ?comment ?image
+WHERE
+  { {   { ?resource foaf:page <http://en.wikipedia.org/wiki/People_(magazine)> . ?resource foaf:page ?uri .
+  ?resource rdfs:label ?wtitle . }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/People_(Hothouse_Flowers_album)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Earth> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/National_Westminster_Bank> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Gregory_House> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Month> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Year> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Understanding_(TV_series)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/World_(The_Price_of_Love)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Living_(UK_TV_channel)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+    }
+    FILTER langMatches(lang(?wtitle), "en")
+
+  }

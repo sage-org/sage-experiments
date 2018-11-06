@@ -90,7 +90,7 @@ def compute_avg_value(fn):
         res = []
         for nb in clients:
             values = []
-            for x in range(2, nbRuns + 1):
+            for x in range(1, nbRuns + 1):
                 directory = "{}/run{}/{}clients/".format(basePath, x, nb)
                 res_directories = listdir(directory)
                 dataframes = []
@@ -157,16 +157,6 @@ def compute_data_transfers(basePath, clients, nbRuns=3, suffix="sage"):
     return compute_avg_value(processor)(basePath, clients, nbRuns, suffix=suffix)
 
 
-def compute_overhead(basePath, clients, nbRuns=3, metric="importTime", suffix="sage"):
-    """Compute avg. preemption overhead"""
-    def processor(dataframes, nb_clients):
-        res = []
-        for (df, nb_timeout) in dataframes:
-            res += list(df[metric])
-        return np.mean(res)
-    return compute_avg_value(processor)(basePath, clients, nbRuns,  suffix=suffix)
-
-
 def compute_tffr(basePath, clients, nbRuns=3, suffix="sage"):
     """Compute avg. time for first results"""
     metric = "time"
@@ -181,3 +171,19 @@ def compute_tffr(basePath, clients, nbRuns=3, suffix="sage"):
             res += list(df[metric] + delta)
         return np.mean(res)
     return compute_avg_value(processor)(basePath, clients, nbRuns,  suffix=suffix)
+
+
+def compute_tpf_ttfr(basePath, clients, nbRuns=3):
+    reference = dict()
+    for folder in listdir('results/watdiv_tpf_ttf'):
+        df = df = np.genfromtxt('results/watdiv_tpf_ttf/{}/execution_times_tpf.csv'.format(folder), delimiter=',', names=True, dtype=None, encoding='utf-8', invalid_raise=False)
+        for row in df:
+            reference[row['query']] = row['httpCalls']
+
+    def processor(dataframes, nb_clients):
+        res = []
+        for (df, nb_timeout) in dataframes:
+            for row in df:
+                res += [(row['serverTime'] / 1000) * reference[row['query']]]
+        return np.mean(res)
+    return compute_avg_value(processor)(basePath, clients, nbRuns, suffix="tpf")

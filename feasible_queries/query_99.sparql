@@ -1,0 +1,13 @@
+
+PREFIX  dbpedia: <http://dbpedia.org/ontology/>
+PREFIX  dbpedia_person: <http://dbpedia.org/ontology/Person/>
+PREFIX  dbpedia_property: <http://dbpedia.org/property/>
+
+SELECT DISTINCT  ?nome ?data_nascimento ?foto ?o ?p
+WHERE
+  { <http://dbpedia.org/resource/Armageddon_%281998_film%29> ?p ?o .
+    ?o dbpedia_property:name ?nome .
+    ?o <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> dbpedia:Person .
+    ?o dbpedia_property:birthdate ?data_nascimento .
+    ?o dbpedia:thumbnail ?foto
+  }

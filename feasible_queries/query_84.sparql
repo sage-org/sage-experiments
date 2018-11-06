@@ -1,0 +1,12 @@
+
+PREFIX  o:    <http://dbpedia.org/ontology/>
+
+CONSTRUCT 
+  { ?x ?p ?y .
+    ?y ?q ?z .}
+WHERE
+  { FILTER ( ?y = <http://dbpedia.org/resource/Vercingetorix> )
+      { ?x ?p ?y }
+    UNION
+      { ?y ?q ?z }
+  }

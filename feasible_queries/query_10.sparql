@@ -1,0 +1,11 @@
+
+SELECT DISTINCT  ?subject ?predicate ?object
+WHERE
+  {   { <http://dbpedia.org/resource/Matthew_Fox_%28actor%29> ?predicate ?object }
+    UNION
+      { ?subject ?predicate <http://dbpedia.org/resource/Matthew_Fox_%28actor%29> }
+    FILTER ( ( lang(?object) = "en" ) || ( lang(?object) = "" ) )
+  }
+ORDER BY ?predicate ?subject
+OFFSET  0
+LIMIT   200

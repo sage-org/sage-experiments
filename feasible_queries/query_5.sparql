@@ -1,0 +1,13 @@
+
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbont: <http://dbpedia.org/ontology/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT  ?link ?name
+WHERE
+  {   { ?link rdf:type dbont:MusicalArtist . ?link foaf:name ?name . }
+    UNION
+      { ?link rdf:type dbont:band . ?link foaf:name ?name . }
+    FILTER regex(?name, "anastacia", "i")
+  }

@@ -1,0 +1,31 @@
+
+SELECT  ?bx ?b
+WHERE
+  {   {   { <http://dbpedia.org/resource/Category:White> <http://www.w3.org/2004/02/skos/core#broader> ?b }
+        UNION
+          { <http://dbpedia.org/resource/White> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+            ?sub <http://www.w3.org/2004/02/skos/core#broader> ?b
+          }
+      }
+    UNION
+      { {   { <http://dbpedia.org/resource/Category:White> <http://www.w3.org/2004/02/skos/core#broader> ?bx .
+              ?bx <http://www.w3.org/2004/02/skos/core#broader> ?b
+            }
+          UNION
+            { <http://dbpedia.org/resource/White> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+              ?sub <http://www.w3.org/2004/02/skos/core#broader> ?bx .
+              ?bx <http://www.w3.org/2004/02/skos/core#broader> ?b
+            }
+        }
+      }
+    UNION
+      {   { <http://dbpedia.org/resource/Category:White> <http://www.w3.org/2004/02/skos/core#broader> ?bx .
+            ?b <http://www.w3.org/2004/02/skos/core#broader> ?bx
+          }
+        UNION
+          { <http://dbpedia.org/resource/White> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+            ?sub <http://www.w3.org/2004/02/skos/core#broader> ?bx .
+            ?b <http://www.w3.org/2004/02/skos/core#broader> ?bx
+          }
+      }
+  }

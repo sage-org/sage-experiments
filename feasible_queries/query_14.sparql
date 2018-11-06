@@ -1,0 +1,17 @@
+
+PREFIX  :     <http://dbpedia.org/resource/>
+PREFIX  dbo:  <http://dbpedia.org/ontology/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+
+SELECT DISTINCT  ?s ?p ?o
+WHERE
+  {   { { ?s ?p ?o }
+        FILTER ( ( ( ?s = :Virginia_Wolf ) && regex(?p, "(http://dbpedia.org/property/|http://dbpedia.org/ontology/)") ) && regex(?o, "http://dbpedia.org/resource/") )
+      }
+    UNION
+      { { ?s ?p ?o }
+        FILTER ( ( ( ?o = :Virginia_Wolf ) && regex(?p, "(http://dbpedia.org/property/|http://dbpedia.org/ontology/)") ) && regex(?s, "http://dbpedia.org/resource/") )
+      }
+  }
+ORDER BY ?s ?p ?o
+LIMIT   16

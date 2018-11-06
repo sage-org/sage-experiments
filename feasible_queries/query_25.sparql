@@ -1,0 +1,20 @@
+
+SELECT  ?nx ?n
+WHERE
+  {   {   { ?n <http://www.w3.org/2004/02/skos/core#broader> <http://dbpedia.org/resource/Category:Porsche> }
+        UNION
+          { <http://dbpedia.org/resource/Porsche> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+            ?n <http://www.w3.org/2004/02/skos/core#broader> ?sub
+          }
+      }
+    UNION
+      {   { ?nx <http://www.w3.org/2004/02/skos/core#broader> <http://dbpedia.org/resource/Category:Porsche> .
+            ?n <http://www.w3.org/2004/02/skos/core#broader> ?nx
+          }
+        UNION
+          { <http://dbpedia.org/resource/Porsche> <http://www.w3.org/2004/02/skos/core#subject> ?sub .
+            ?nx <http://www.w3.org/2004/02/skos/core#broader> ?sub .
+            ?n <http://www.w3.org/2004/02/skos/core#broader> ?nx
+          }
+      }
+  }

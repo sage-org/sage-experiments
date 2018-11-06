@@ -1,0 +1,21 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  dbpp: <http://dbpedia.org/property/>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?item ?title ?description
+WHERE
+  {   { ?item dbpp:series <http://dbpedia.org/resource/How_I_Met_Your_Mother> .
+        ?item foaf:name ?title .
+        ?item rdfs:comment ?description .
+        ?item rdf:type <http://dbpedia.org/ontology/TelevisionEpisode>
+      }
+    UNION
+      { ?item dbpp:series ?brand .
+        ?brand dbpp:redirect <http://dbpedia.org/resource/How_I_Met_Your_Mother> .
+        ?item foaf:name ?title .
+        ?item rdfs:comment ?description .
+        ?item rdf:type <http://dbpedia.org/ontology/TelevisionEpisode>
+      }
+  }

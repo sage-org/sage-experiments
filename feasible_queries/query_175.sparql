@@ -1,0 +1,110 @@
+
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?resource ?uri ?wtitle ?comment ?image
+WHERE
+  { {   { ?resource foaf:page <http://en.wikipedia.org/wiki/Web_search_engine> . ?resource foaf:page ?uri .
+  ?resource rdfs:label ?wtitle .
+  OPTIONAL
+    { ?resource rdfs:comment ?comment
+      FILTER langMatches(lang(?comment), "en")
+    }
+  OPTIONAL
+    { ?resource foaf:depiction ?image }
+   }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Google_search> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Google> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Censorship> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Free_(ISP)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Calendar> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/People's_Republic_of_China> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/July> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Free_(love)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+      UNION
+        { ?resource foaf:page <http://en.wikipedia.org/wiki/Driver_(video_game)> . ?resource foaf:page ?uri .
+        ?resource rdfs:label ?wtitle .
+        OPTIONAL
+          { ?resource rdfs:comment ?comment
+            FILTER langMatches(lang(?comment), "en")
+          }
+        OPTIONAL
+          { ?resource foaf:depiction ?image }
+         }
+    }
+    FILTER langMatches(lang(?wtitle), "en")
+  }

@@ -1,0 +1,17 @@
+
+PREFIX  dbpp: <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT  ?item ?type
+WHERE
+  {   { ?item dbpp:series <http://dbpedia.org/resource/Burn_Notice> .
+        ?item rdf:type <http://dbpedia.org/ontology/TelevisionEpisode> .
+        ?item rdf:type ?type
+      }
+    UNION
+      { ?item dbpp:series ?brand .
+        ?brand dbpp:redirect <http://dbpedia.org/resource/Burn_Notice> .
+        ?item rdf:type <http://dbpedia.org/ontology/TelevisionEpisode> .
+        ?item rdf:type ?type
+      }
+  }
