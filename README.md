@@ -24,7 +24,7 @@ All scripts used during experiments are available in the [scripts](https://githu
 
 ## Dataset and queries
 
-We used the [Waterloo SPARQL Diversity Tests suite](http://dsg.uwaterloo.ca/watdiv/) (WatDiv) RDF dataset, encoded in [HDT format](http://www.rdfhdt.org/). The dataset contains 10^7 triples, and the queries used are conjunctive SPARQL queries with STAR, PATH and SNOWFLAKE shapes. These queries vary in complexity, with very high and very low selectivity. All queries are available in the [watdiv_queries.zip archive](https://github.com/sage-org/sage-experiments/blob/master/watdiv_queries.zip).
+We used the [Waterloo SPARQL Diversity Tests suite](http://dsg.uwaterloo.ca/watdiv/) (WatDiv) RDF dataset, encoded in [HDT format](http://www.rdfhdt.org/). The dataset contains 10^7 triples, and the queries used are conjunctive SPARQL queries with STAR, PATH and SNOWFLAKE shapes. They are taken from the [BrTPF experimental study](http://olafhartig.de/brTPF-ODBASE2016/#data). These queries vary in complexity, with very high and very low selectivity. All queries are available in the [watdiv_queries.zip archive](https://github.com/sage-org/sage-experiments/blob/master/watdiv_queries.zip).
 
 ## Results
 
