@@ -2,6 +2,18 @@
 *.class
 target/
 
+# stuff I don't want to commit but they may be usefull later
+brtpf.py
+sim/
+
+# queries folder (too big to be uploaded on github)
+update_queries/
+watdiv_one_triple/
+watdiv_queries/
+bsbm1k/
+feasible_bis/
+feasible_queries/
+
 # IntelliJ files
 .idea/
 *.iml
@@ -28,7 +40,6 @@ build/
 *.jar
 *.war
 *.ear
-*.zip
 *.tar.gz
 *.rar
 

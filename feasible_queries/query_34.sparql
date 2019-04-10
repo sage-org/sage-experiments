@@ -1,6 +1,0 @@
-
-SELECT DISTINCT  ?concept
-WHERE
-  { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?concept }
-OFFSET  50
-LIMIT   50

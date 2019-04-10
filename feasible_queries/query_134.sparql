@@ -1,7 +1,0 @@
-
-CONSTRUCT 
-  { <http://dbpedia.org/resource/Hercule_Poirot> ?p ?o .}
-WHERE
-  { <http://dbpedia.org/resource/Hercule_Poirot> ?p ?o
-    FILTER ( ( ( ( ( ( ( ( ( ( lang(?o) = "de" ) || ( lang(?o) = "zh" ) ) || ( lang(?o) = "pt" ) ) || ( lang(?o) = "fr" ) ) || ( lang(?o) = "en" ) ) || ( lang(?o) = "ru" ) ) || ( lang(?o) = "es" ) ) || ( lang(?o) = "ja" ) ) || ( lang(?o) = "" ) ) || isURI(?o) )
-  }
