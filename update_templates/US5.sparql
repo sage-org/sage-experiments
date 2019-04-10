@@ -1,0 +1,9 @@
+#mapping v1 wsdbm:ProductCategory uniform
+INSERT {
+  ?v0 <https://schema.org/disambiguatingDescription> ?v2.
+} WHERE {
+  ?v0  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  %v1% .
+  ?v0  <http://schema.org/description>  ?v2 .
+  ?v0  <http://schema.org/keywords>  ?v3 .
+  ?v0  <http://schema.org/language>  <http://db.uwaterloo.ca/~galuc/wsdbm/Language0> .
+}

@@ -1,0 +1,14 @@
+#mapping v3 wsdbm:Topic uniform
+INSERT {
+  ?v7 <https://pending.schema.org/knowsAbout> ?v0 .
+} WHERE {
+  ?v0  <http://xmlns.com/foaf/homepage>  ?v1 .
+  ?v2  <http://purl.org/goodrelations/includes>  ?v0 .
+  ?v0  <http://ogp.me/ns#tag>  %v3% .
+  ?v0  <http://schema.org/description>  ?v4 .
+  ?v0  <http://schema.org/contentSize>  ?v8 .
+  ?v1  <http://schema.org/url>  ?v5 .
+  ?v1  <http://db.uwaterloo.ca/~galuc/wsdbm/hits>  ?v6 .
+  ?v1  <http://schema.org/language>  <http://db.uwaterloo.ca/~galuc/wsdbm/Language0> .
+  ?v7  <http://db.uwaterloo.ca/~galuc/wsdbm/likes>  ?v0 .
+}

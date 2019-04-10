@@ -1,0 +1,10 @@
+#mapping v1 wsdbm:AgeGroup uniform
+INSERT {
+  ?v3 <https://schema.org/producer> ?v0 .
+  ?v0 <https://schema.org/owns> ?v3 .
+} WHERE {
+  ?v0  <http://xmlns.com/foaf/age>  %v1% .
+  ?v0  <http://xmlns.com/foaf/familyName>  ?v2 .
+  ?v3  <http://purl.org/ontology/mo/artist>  ?v0 .
+  ?v0  <http://schema.org/nationality>  <http://db.uwaterloo.ca/~galuc/wsdbm/Country1> .
+}

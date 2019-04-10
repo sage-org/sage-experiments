@@ -1,0 +1,19 @@
+#mapping v01 wsdbm:Country uniform
+INSERT {
+  ?v0 <https://schema.org/includesObject> ?objURI .
+  ?objURI <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/TypeAndQuantityNode> ;
+          <https://schema.org/typeOfGood> ?v2 ;
+          <https://schema.org/description> ?v3 ;
+          <https://schema.org/name> ?v4 .
+
+} WHERE {
+  ?v0 <http://schema.org/eligibleRegion> %v01%.
+  ?v0 <http://purl.org/goodrelations/includes> ?v1 .
+  ?v1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?v2 .
+  ?v1 <http://schema.org/text> ?v3 .
+  ?v1 <http://ogp.me/ns#title> ?v4 .
+  # ?v0 <http://purl.org/goodrelations/price> ?v2 .
+  # ?v0 <http://purl.org/goodrelations/validThrough> ?v3 .
+  # ?v0 <http://schema.org/eligibleQuantity> ?v4 .
+  BIND (UUID() as ?objURI)
+}
