@@ -5,7 +5,7 @@
 BIGBOSS_USERNAME='ladda'
 BIGBOSS_IP='172.16.8.50'
 START_DB_SCRIPT='./postgre_backup/run_postgre.sh'
-START_SAGE_SCRIPT='sage-postgre'
+START_SAGE_SCRIPT='postgre_backup/start_sage_server.sh'
 SAGE_CONTAINER_NAME='sage-postgres'
 POSTGRES_CONTAINER_NAME='some-postgres'
 
