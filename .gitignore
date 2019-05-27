@@ -10,6 +10,7 @@ sim/
 update_queries/
 watdiv_one_triple/
 watdiv_queries/
+watdiv_queries_update/
 bsbm1k/
 feasible_bis/
 feasible_queries/

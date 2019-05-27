@@ -1,9 +1,0 @@
-#mapping v3 wsdbm:SubGenre uniform
-INSERT {
-  ?v0 <https://schema.org/performer> ?v1 .
-  ?v1 <https://schema.org/performerIn> ?v0 .
-} WHERE {
-  ?v0  <http://purl.org/ontology/mo/conductor>  ?v1 .
-  ?v0  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  ?v2 .
-  ?v0  <http://db.uwaterloo.ca/~galuc/wsdbm/hasGenre>  %v3% .
-}

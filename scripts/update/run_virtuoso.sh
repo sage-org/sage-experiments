@@ -4,7 +4,6 @@
 
 QUERIES=$1 # i.e. a folder that contains SPARQL queries to execute
 OUTPUT=$2
-cpt=1
 
 if [ "$#" -ne 2 ]; then
   echo "Illegal number of parameters."
@@ -12,7 +11,6 @@ if [ "$#" -ne 2 ]; then
   exit
 fi
 
-# SERVER="http://172.16.8.50:8000/tpf/watdiv10m"
 SERVER="http://localhost:8000/sparql"
 
 mkdir -p $OUTPUT/results/
@@ -24,11 +22,12 @@ RESFILE="${OUTPUT}/execution_times_virtuoso.csv"
 echo "query,time,httpCalls,nbResults,errors" > $RESFILE
 
 for qfile in $QUERIES/*; do
+  # save query name
   x=`basename $qfile`
   qname="${x%.*}"
   echo -n "${qname}," >> $RESFILE
-  # execution time
-  timeout 120s ./bin/virtuoso-paginate.js $SERVER -f $qfile -m $RESFILE > $OUTPUT/results/$qname.log 2> $OUTPUT/errors/$qname.err
+  # execute query
+  ./bin/virtuoso.js $SERVER -f $qfile -m $RESFILE > $OUTPUT/results/$qname.log 2> $OUTPUT/errors/$qname.err
   echo -n "," >> $RESFILE
   # nb results
   echo -n `wc -l ${OUTPUT}/results/${qname}.log | awk '{print $1}'` >> $RESFILE

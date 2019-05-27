@@ -4,7 +4,6 @@
 
 QUERIES=$1 # i.e. a folder that contains SPARQL queries to execute
 OUTPUT=$2
-cpt=1
 
 if [ "$#" -ne 2 ]; then
   echo "Illegal number of parameters."
@@ -26,12 +25,12 @@ echo "query,time,httpCalls,serverTime,importTime,exportTime,errors" > $RESFILE
 for qfile in $QUERIES/*; do
   x=`basename $qfile`
   qname="${x%.*}"
-  # query name
+  # save query name
   echo -n "${qname}," >> $RESFILE
-  # execution time
+  # execute query
   ./bin/sage-jena-1.1/bin/sage-jena $SERVER --update -f $qfile -m $RESFILE > /dev/null 2> ${OUTPUT}/errors/${qname}.err
   echo -n "," >> $RESFILE
-  # nb errors during query processing
+  # save nb errors during query processing
   echo `wc -l ${OUTPUT}/errors/${qname}.err | awk '{print $1}'` >> $RESFILE
 done
 
