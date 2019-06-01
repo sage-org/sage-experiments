@@ -1,5 +1,7 @@
 # SaGe: Web Preemption for Public SPARQL Query Services
 
+This work has been published in the *Proceedings of the 2019 World Wide Web Conference* (WWW’19) [https://doi.org/10.1145/3308558.3313652](https://doi.org/10.1145/3308558.3313652)
+
 ## Abstract
 
 To preserve the availability of SPARQL query services, data providers enforce quotas on server usage. Queries which exceed these quotas are interrupted and delivers partial results. Such interruption is not an issue if it is possible to resume the query execution afterwards. Unfortunately, there is no preemption model for the web that allows to suspend and resume SPARQL queries.
