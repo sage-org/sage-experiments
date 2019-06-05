@@ -27,7 +27,7 @@ for qfile in $QUERIES/*; do
   qname="${x%.*}"
   echo -n "${qname}," >> $RESFILE
   # execute query
-  ./bin/virtuoso.js $SERVER -f $qfile -m $RESFILE > $OUTPUT/results/$qname.log 2> $OUTPUT/errors/$qname.err
+  ./bin/virtuoso-update.js $SERVER -f $qfile -m $RESFILE > $OUTPUT/results/$qname.log 2> $OUTPUT/errors/$qname.err
   echo -n "," >> $RESFILE
   # nb results
   echo -n `wc -l ${OUTPUT}/results/${qname}.log | awk '{print $1}'` >> $RESFILE

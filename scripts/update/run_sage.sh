@@ -20,15 +20,29 @@ mkdir -p $OUTPUT/errors/
 RESFILE="${OUTPUT}/execution_times_sage.csv"
 
 # init results file with headers
-echo "query,time,httpCalls,serverTime,importTime,exportTime,errors" > $RESFILE
+echo "query,time,httpCallsRead,httpCallsWrite,serverTimeRead,serverTimeWrite,resumeTimeRead,resumeTimeWrite,suspendTimeRead,suspendTimeWrite,errors" > $RESFILE
 
-for qfile in $QUERIES/*; do
+# execute inserts first
+for qfile in $QUERIES/inserts/*; do
   x=`basename $qfile`
   qname="${x%.*}"
   # save query name
   echo -n "${qname}," >> $RESFILE
   # execute query
-  ./bin/sage-jena-1.1/bin/sage-jena $SERVER --update -f $qfile -m $RESFILE > /dev/null 2> ${OUTPUT}/errors/${qname}.err
+  timeout 30m ./bin/sage-jena-1.1/bin/sage-jena $SERVER --update -f $qfile -m $RESFILE > /dev/null 2> ${OUTPUT}/errors/${qname}.err
+  echo -n "," >> $RESFILE
+  # save nb errors during query processing
+  echo `wc -l ${OUTPUT}/errors/${qname}.err | awk '{print $1}'` >> $RESFILE
+done
+
+# execute delete last
+for qfile in $QUERIES/deletes/*; do
+  x=`basename $qfile`
+  qname="${x%.*}"
+  # save query name
+  echo -n "${qname}," >> $RESFILE
+  # execute query
+  timeout 30m ./bin/sage-jena-1.1/bin/sage-jena $SERVER --update -f $qfile -m $RESFILE > /dev/null 2> ${OUTPUT}/errors/${qname}.err
   echo -n "," >> $RESFILE
   # save nb errors during query processing
   echo `wc -l ${OUTPUT}/errors/${qname}.err | awk '{print $1}'` >> $RESFILE

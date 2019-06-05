@@ -8,6 +8,6 @@ for run in ${NBRUNS[@]}; do
   mkdir -p $RESDIR
   for nb in ${NBCLIENTS[@]}; do
     python3 scripts/run_load.py watdiv_queries/ $RESDIR $nb sage
-    ./scripts/update/reset_db_state.sh > /dev/null
+    # ./scripts/update/reset_db_state.sh > /dev/null
   done
 done

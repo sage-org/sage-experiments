@@ -4,16 +4,18 @@
 
 BIGBOSS_USERNAME='ladda'
 BIGBOSS_IP='172.16.8.50'
-
-RESET_ADDITIONS_GRAPH_SCRIPT='./thomas/reset_graph.sh'
-START_SAGE_SCRIPT='./thomas/start_sage.sh'
-STOP_SAGE_SCRIPT='./thomas/stop_sage.sh'
+START_DB_SCRIPT='./postgre_backup/run_postgre.sh'
+START_SAGE_SCRIPT='./postgre_backup/start_sage_server.sh'
 
 # stop SaGe server
-ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} ${START_SAGE_SCRIPT}
+ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} ./thomas/stop_sage.sh
 
-# reset additions graph back to an empty state
-ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} ${RESET_ADDITIONS_GRAPH_SCRIPT}
+# restart PostgreSQL DB
+
+ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} /home/ladda/thomas/local/bin/pg_ctl -D /home/ladda/thomas/postgres_data -l logfile stop
+ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} rm -rf /home/ladda/thomas/postgres_data
+ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} cp -r /home/ladda/thomas/postgres_backup /home/ladda/thomas/postgres_data
+ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} /home/ladda/thomas/local/bin/pg_ctl -D /home/ladda/thomas/postgres_data -l logfile start
 
 # restart SaGe
-ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} ${STOP_SAGE_SCRIPT}
+ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} ./thomas/start_sage.sh

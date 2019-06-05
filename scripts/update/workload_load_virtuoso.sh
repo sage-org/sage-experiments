@@ -8,6 +8,6 @@ for run in ${NBRUNS[@]}; do
   mkdir -p $RESDIR
   for nb in ${NBCLIENTS[@]}; do
     python3 scripts/run_load.py watdiv_queries/ $RESDIR $nb virtuoso
-    # TODO reset Virtuoso DB state
+    ./scripts/update/reset_virtuoso_state.sh
   done
 done
