@@ -7,8 +7,8 @@ BIGBOSS_IP='172.16.8.50'
 START_VIRTUSO_SCRIPT='./ladda/run-virtuso.sh'
 VIRTUOSO_DOCKER_ID_FILE='/home/ladda/virtuoso-docker-id'
 
-VIRTUOSO_DATA='/home/ladda/docker-containers/virtuoso_data'
-VIRTUOSO_BACKUP='/home/ladda/docker-containers/backup_virtuoso'
+VIRTUOSO_DATA='/home/ladda/docker-containers/data'
+VIRTUOSO_BACKUP='/home/ladda/docker-containers/backup'
 
 # stop Virtuoso server
 ssh ${BIGBOSS_USERNAME}@${BIGBOSS_IP} docker kill `cat /home/ladda/virtuoso-docker-id`
