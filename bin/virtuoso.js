@@ -62,7 +62,7 @@ const config = {
   method: 'GET',
   url: server,
   qs: {
-    'default-graph-uri': 'http://foo.bar',
+    'default-graph-uri': 'http://localhost:8890/watdiv',
     query: query,
     format: 'text/csv',
     timeout: 5 * 60 * 1000
